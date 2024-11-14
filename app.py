@@ -3,6 +3,7 @@ from sklearn.preprocessing import StandardScaler
 
 from flask import Flask, render_template, request
 import pickle
+import os
 
 scaler = StandardScaler()
 
@@ -53,5 +54,5 @@ def predict():
     return render_template('output.html', data=res)
 
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
